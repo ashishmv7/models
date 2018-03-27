@@ -19,7 +19,6 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
-
 from datasets import dataset_factory
 from deployment import model_deploy
 from nets import nets_factory
@@ -37,7 +36,7 @@ tf.app.flags.DEFINE_string(
 tf.app.flags.DEFINE_integer('num_clones', 1,
                             'Number of model clones to deploy.')
 
-tf.app.flags.DEFINE_boolean('clone_on_cpu', False,
+tf.app.flags.DEFINE_boolean('clone_on_cpu', True,
                             'Use CPUs to deploy clones.')
 
 tf.app.flags.DEFINE_integer('worker_replicas', 1, 'Number of worker replicas.')
@@ -383,6 +382,7 @@ def main(_):
   if not FLAGS.dataset_dir:
     raise ValueError('You must supply the dataset directory with --dataset_dir')
 
+  print('dataset_name: ',FLAGS.dataset_name, '\ndataset_dir:',FLAGS.dataset_dir)
   tf.logging.set_verbosity(tf.logging.INFO)
   with tf.Graph().as_default():
     #######################
@@ -404,7 +404,12 @@ def main(_):
     ######################
     dataset = dataset_factory.get_dataset(
         FLAGS.dataset_name, FLAGS.dataset_split_name, FLAGS.dataset_dir)
+    # import ipdb;ipdb.set_trace()
 
+    print("dataset is : ", dataset, "---------------------_________________-----------------")
+    # for i in dataset:
+    #     print(i)
+    # print("_________________________________________________________-")
     ######################
     # Select the network #
     ######################
