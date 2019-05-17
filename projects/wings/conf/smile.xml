@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE smile SYSTEM "smile.dtd">
+            <smile name="Wings" good-name="wings" smile-version="4.0.3" model-name="wings" release-name="Wings" version="0.1">
+                      
+	
+		<group name="wings">
+		<module name="WingsData" display-name="WingsData" sbt-module="true" import-component="" version="SNAPSHOT" location="com.nividapps.wingsdata" type="DATA" category="server" >
+	</module>
+		<module name="WingsPlay" display-name="WingsPlay" sbt-module="true" import-component="" version="SNAPSHOT" location="wingsplay" type="PLAY" category="server" >
+	<depends-on name="WingsData"/>
+	</module>
+		<module name="WingsReadMongo" display-name="WingsReadMongo" sbt-module="true" import-component="" version="SNAPSHOT" location="com.nividapps.wingsreadmongo" type="MONGO" category="server" >
+	<depends-on name="WingsData"/>
+	</module>
+		<module name="WingsMongo" display-name="WingsMongo" sbt-module="true" import-component="" version="SNAPSHOT" location="com.nividapps.wingsmongo" type="MONGO" category="server" >
+	<depends-on name="WingsData"/>
+	</module>
+		<module name="WingsStream" display-name="WingsStream" sbt-module="true" import-component="" version="SNAPSHOT" location="com.nividapps.wingsstream" type="STREAM" category="server" >
+	</module>
+		<module name="WingsDomain" display-name="WingsDomain" sbt-module="true" import-component="" version="SNAPSHOT" location="com.nividapps.wingsdomain" type="DOMAIN" category="server" >
+	<depends-on name="WingsStream"/>
+	<depends-on name="WingsMongo"/>
+	</module>
+		<module name="WingsQuery" display-name="WingsQuery" sbt-module="true" import-component="" version="SNAPSHOT" location="com.nividapps.wingsquery" type="QUERY" category="server" >
+	<depends-on name="WingsStream"/>
+	<depends-on name="WingsReadMongo"/>
+	</module>
+	</group>
+	<bundle name="wings"> 
+</bundle><elephant-tusk><header>project wings version 0.1</header><module-entry name="WingsData" group-name="wings">
+ <content>data-module WingsData at com.nividapps.wingsdata</content>
+ </module-entry>
+          
+<module-entry name="WingsPlay" group-name="wings">
+ <content>play-module WingsPlay(WingsData) at wingsplay</content>
+ </module-entry>
+          
+<module-entry name="WingsReadMongo" group-name="wings">
+ <content>mongo-module WingsReadMongo(WingsData) at com.nividapps.wingsreadmongo</content>
+ </module-entry>
+          
+<module-entry name="WingsMongo" group-name="wings">
+ <content>mongo-module WingsMongo(WingsData) at com.nividapps.wingsmongo</content>
+ </module-entry>
+          
+<module-entry name="WingsStream" group-name="wings">
+ <content>stream-module WingsStream at com.nividapps.wingsstream</content>
+ </module-entry>
+          
+<module-entry name="WingsDomain" group-name="wings">
+ <content>domain-module WingsDomain(WingsStream,WingsMongo) at com.nividapps.wingsdomain</content>
+ </module-entry>
+          
+<module-entry name="WingsQuery" group-name="wings">
+ <content>query-module WingsQuery(WingsStream,WingsReadMongo) at com.nividapps.wingsquery</content>
+ </module-entry>
+          </elephant-tusk>
+</smile>

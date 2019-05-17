@@ -1,0 +1,16 @@
+project wings  version 0.1
+
+
+
+section wings {
+	data-module WingsData at com.nividapps.wingsdata
+	play-module WingsPlay(WingsData) at wingsplay
+	mongo-module WingsReadMongo(WingsData) at com.nividapps.wingsreadmongo
+	mongo-module WingsMongo(WingsData) at com.nividapps.wingsmongo
+	stream-module WingsStream at com.nividapps.wingsstream
+	domain-module WingsDomain(WingsStream,WingsMongo) at com.nividapps.wingsdomain
+	query-module WingsQuery(WingsStream,WingsReadMongo) at com.nividapps.wingsquery
+	
+}
+
+

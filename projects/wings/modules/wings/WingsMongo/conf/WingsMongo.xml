@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mongo-module SYSTEM "smile-mongo.dtd">
+        <mongo-module name="WingsMongo"> 
+	<doc></doc>
+</mongo-module>

@@ -1,0 +1,65 @@
+<template>
+<v-layout id="||name||">
+<v-flex>
+  <v-card>
+     <v-card-text>
+     <SmileForm
+      title="Add User"
+      v-model='addUserForm'
+      :decorator='addUserFormDecorator'
+      clear
+      @submit='addUser'>
+    </SmileForm>
+     </v-card-text>
+  </v-card>
+</v-flex>
+</v-layout>
+
+</template>
+
+<script lang="ts">
+
+import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator';
+import store, * as Store from '@/../src-gen/store';
+import * as Data from '@/../src-gen/data';
+import SmileForm from '@/components/custom/smile/SmileForm.vue';
+// import * as Enum from '@/../src-gen/enums';
+// import * as ReaderActionSet from '@/../src-gen/reader-action-set';
+import * as WriterActionSet from '@/../src-gen/writer-action-set';
+// import * as ReaderService from '@/../src-gen/reader-service';
+// import * as WriterService from '@/../src-gen/writer-service';
+
+
+@Component({
+  components: { SmileForm }
+})
+export default class ||name|| extends Vue {
+
+private addUserForm: Data.AddUserForm = new Data.AddUserForm();
+private addUserFormDecorator = Data.AddUserForm.toSmileFormDecorator();
+
+public addUser() {
+
+    WriterActionSet.User.AddUser.execute(this.addUserForm, output => {
+      this.$router.push({ name : 'User.UserDetails.ShowUserUserGroupList', params : { userName : this.addUserForm.userName}});
+    });
+
+
+    console.log('addUser' + JSON.stringify(this.addUserForm));
+
+  }
+
+
+
+
+
+
+}
+
+
+
+</script>
+
+<style>
+</style>
+

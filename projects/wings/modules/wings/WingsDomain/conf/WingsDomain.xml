@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE domain-module SYSTEM "smile-domain.dtd">
+        <domain-module name="WingsDomain"> 
+	<doc></doc>
+</domain-module>

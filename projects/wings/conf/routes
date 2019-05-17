@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           wings.controllers.Application.index
+GET     /swagger-play-modules       wings.controllers.Application.swaggerPlayModules
+
+#smile - dont edit anything below.
+
+
+GET  /swagger controllers.Assets.at(path="/public/swagger", file ="index.html")
+GET  /public/*file   controllers.Assets.at(path="/public", file)
+
+
+
+
+-> /wingsplay wingsplay.Routes

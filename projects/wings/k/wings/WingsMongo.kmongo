@@ -1,0 +1,65 @@
+module WingsMongo (WingsMongo)
+
+collection Contract{
+	property contractNo:String
+	property contractDate:CalendarDate
+	property customerName:String
+	reference seller:Seller
+    reference customer:Customer
+    property productType:String
+    property quantity:Int
+    reference quality:Quality
+    reference price:Price
+    property deliveryType:String
+    reference payment:Payment
+    
+    
+}
+
+collection Customer{
+	property customerName:String
+	property addressLine1:String
+	property addressLine2:String
+	property npwpNumber:String
+	property kodepos:String
+	reference qualitySpec:QualitySpec*
+}
+
+collection Seller{
+	property sellerName:String
+	property addressLine1:String
+	property addressLine2:String
+	property npwpNumber:String
+	property kodepos:String
+}
+
+collection Quality{
+	property ffaPercent:Double
+	property moistureAndImpuritiesPercentage:Double
+	
+	
+}
+collection Price{
+	property basePrice:Double
+	property ppnPercentage:Double
+}
+
+collection Payment{
+	property payableTo:String
+	property accountNo:String
+	property progressPercentage:Int
+	property paymentDate:CalendarDate?
+	property paymentTerms:String?
+	
+}
+
+collection QualitySpec{
+	property qualityType:String
+	property lowerRange:Double
+	property upperRange:Double
+	property reductionRate:Double
+}
+
+
+
+
